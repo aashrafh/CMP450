@@ -1,15 +1,22 @@
 
 """ HELPER FUNCTION: GET ACCURACY ========================================="""
+
+
 def get_accuracy(pred, Y):
     return sum(pred == Y) / float(len(Y))
 
+
 """ HELPER FUNCTION: PRINT ACCURACY ========================================="""
+
+
 def print_accuracy(acc):
     print('Accuracy: Training: %.4f - Test: %.4f' % acc)
-   
+
 
 """ HELPER FUNCTION: PLOT FUNCTION ========================================="""
-def plot_accuracy(acc_train, acc_test):
+
+
+def plot_accuracy(acc_train, acc_test, ylabel, title):
     import pandas as pd
     import matplotlib.pyplot as plt
     df_error = pd.DataFrame([acc_train, acc_test]).T
@@ -18,13 +25,11 @@ def plot_accuracy(acc_train, acc_test):
                           color=['lightblue', 'darkblue'], grid=True)
     plot1.set_xlabel('Number of iterations', fontsize=12)
     plot1.set_xticklabels(range(0, 450, 50))
-    plot1.set_ylabel('Accuracy', fontsize=12)
-    plot1.set_title('Accuracy vs number of iterations', fontsize=16)
+    plot1.set_ylabel(ylabel, fontsize=12)
+    plot1.set_title(title, fontsize=16)
     plt.axhline(y=acc_test[0], linewidth=1, color='red', ls='dashed')
     plt.show()
-    
-    
+
 
 def get_error_rate(pred, Y):
     return sum(pred != Y) / float(len(Y))
-
